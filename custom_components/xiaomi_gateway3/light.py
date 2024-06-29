@@ -1,4 +1,5 @@
 import asyncio
+import logging
 import time
 from functools import cached_property
 
@@ -17,6 +18,8 @@ from homeassistant.helpers.restore_state import RestoreEntity
 
 from .core.gate.base import XGateway
 from .hass.entity import XEntity
+
+_LOGGER = logging.getLogger(__name__)
 
 
 # noinspection PyUnusedLocal
@@ -64,7 +67,6 @@ class XLight(XEntity, LightEntity, RestoreEntity):
         if ATTR_COLOR_TEMP in data:
             self._attr_color_temp = data[ATTR_COLOR_TEMP]
             self._attr_color_mode = ColorMode.COLOR_TEMP
-            data.setdefault(self.attr, True)
         if self.attr in data:
             self._attr_is_on = bool(data[self.attr])
         if ATTR_HS_COLOR in data:
