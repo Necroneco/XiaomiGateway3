@@ -2269,6 +2269,7 @@ DEVICES += [{
     "spec": [
         BaseConv("outlet", "switch", mi="2.p.1"),
         MathConv("power", "sensor", mi="3.p.1", multiply=0.01),
+        MathConv("power_consumption", "sensor", mi="3.p.2", multiply=0.01, entity={"statistics": "total_increasing"}),
         BaseConv("led", "switch", mi="4.p.1"),  # config
         BaseConv("power_protect", "switch", mi="7.p.1", entity=ENTITY_CONFIG),
         MathConv("power_value", "number", mi="7.p.2", multiply=0.01, min=0, max=163840000, entity=ENTITY_CONFIG),
