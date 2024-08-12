@@ -118,9 +118,9 @@ ENTITY_DESCRIPTIONS: dict[str, dict] = {
     ##
     # main controls
     "alarm_trigger": {"icon": "mdi:alarm-bell"},
-    "fan": {"icon": "mdi:fan"},
-    "outlet": {"icon": "mdi:power-socket-us"},
-    "plug": {"icon": "mdi:power-plug"},
+    "fan": {"icon": "mdi:fan", "name": None},
+    "outlet": {"icon": "mdi:power-socket-us", "name": None},
+    "plug": {"icon": "mdi:power-plug", "name": None},
     "usb": {"icon": "mdi:usb-port"},
     ##
     # batteries and energy sensors
@@ -222,7 +222,7 @@ def setup_entity_description(entity: Entity, conv: BaseConv) -> bool:
         return False
 
     for k, v in desc.items():
-        if k == "lazy" or v is None:
+        if k == "lazy" or (v is None and k != "name"):
             continue
         if k == "category" and type(v) is str:
             v = EntityCategory(v)
