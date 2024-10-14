@@ -3583,9 +3583,9 @@ DEVICES += [{
         ColorTempKelvin("color_temp", mi="2.p.3", mink=2700, maxk=5000),
         MathConv("color", "number", mi="2.p.4", min=1, max=16777215),
         MapConv("mode", "select", mi="2.p.5", map={1: "Auto", 2: "Day", 3: "Color", 4: "Warmth", 5: "Leisure"}),
-        BaseConv("battery", "sensor", mi="3.p.1"), 
-        MapConv("main_ charging_state", "sensor", mi="3.p.2", map={0: "Not Plug", 1: "Plug In"}), 
-        MapConv("sub_ charging_state", "sensor", mi="3.p.3", map={0: "No Equipment", 1: "Charging", 2: "Full", 3: "Inserted Without Charge"}), 
+        BaseConv("battery", "sensor", mi="3.p.1"),
+        MapConv("main_ charging_state", "sensor", mi="3.p.2", map={0: "Not Plug", 1: "Plug In"}),
+        MapConv("sub_ charging_state", "sensor", mi="3.p.3", map={0: "No Equipment", 1: "Charging", 2: "Full", 3: "Inserted Without Charge"}),
         BoolConv("delay_switch", "switch", mi="4.p.1"),
         MathConv("delay_time", "number", mi="4.p.2", min=1, max=60),
     ]
@@ -3695,6 +3695,14 @@ DEVICES += [{
         MapConv("power_on_state_4", "select", mi="5.p.3", map={0: "Default", 1: "Off", 2: "On"}),  # config
         BaseConv("action", "sensor"),
         MapConv("action", mi="6.e.1.p.2", map={1: BUTTON_1_SINGLE, 2: BUTTON_2_SINGLE, 3: BUTTON_3_SINGLE, 4: BUTTON_4_SINGLE, 5: "button_5_single", 6: "button_6_single"}),
+    ],
+}, {
+    19653: ["Linptech", "Human Presence Panel Light LP1", "linp.light.lp1bc"],
+    "spec": [
+        BaseConv("light", "light", mi="2.p.1"),
+        BrightnessConv("brightness", mi="2.p.2", max=100),
+        BoolConv("occupancy", "binary_sensor", mi="5.p.1"),
+        MathConv("illuminance", "sensor", mi="5.p.5"),
     ],
 }, {
     20066: [None, "Mesh Light", "yankon.light.ykmesh"],
